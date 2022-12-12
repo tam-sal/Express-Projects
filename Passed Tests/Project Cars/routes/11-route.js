@@ -21,16 +21,26 @@ const getCarsByBrand = require('../controllers/05-controller');
   //* 6) Recuerda que los parametros de URL son recibidos como string.
 */
 
+const alphaNumeric = (arg) => {
+  return /\d/.test(arg)
+}
+
 router.get('/cars/:brandName', (req, res) => {
   let { brandName } = req.params
-
   const { sort } = req.query
-  const alphaNumeric = (arg) => {
-    return /\d/.test(arg)
+
+  if (alphaNumeric(brandName)) return res.status(400).json({ error: 'El parámetro brandName es inválido' })
+  if (sort !== 'highPrice' && sort !== 'lowPrice' && sort) return res.status(400).json({ error: `El parámetro sort es inválido` })
+
+  try {
+    const result = getCarsByBrand(brandName, sort)
+    if (result === "No se encontraron coches") res.status(400).json({ error: "No se encontraron coches" })
+    return res.json({ brand: brandName, results: result })
   }
-  if (Number(brandName)) return res.status(400).json({ error: 'El parámetro brandName es inválido' })
-
-
+  catch (error) {
+    if (error.message === 'Marca no encontrada') return res.status(404).json({ error: error.message })
+    return res.status(400).json({ error: error.message })
+  }
 
 })
 
