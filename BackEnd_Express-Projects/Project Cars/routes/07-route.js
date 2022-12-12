@@ -15,13 +15,11 @@ const addCars = require('../controllers/01-controller');
 */
 
 router.post('/cars', (req, res) => {
-  const car = req.body.car
-  const brand = req.body.brand
-  //* const carObj = { id: car.id, model: car.model, color: car.color, price: car.price, new: car.new }
-  //* const brandObj = { name: brand.name, cars: brand.cars }
+  const { cars, brand } = req.body
+
 
   try {
-    const result = addCars(car, brand)
+    const result = addCars(cars, brand)
     return res.status(201).json({ msg: result })
   }
   catch (error) {
