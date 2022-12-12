@@ -77,14 +77,14 @@ const updateCar = (car) => {
 
 }
 
-const { generateCar, generateBrand } = utils
-const newC = (generateCar())
-const newB = (generateBrand());
+// const { generateCar, generateBrand } = utils
+// const newC = (generateCar())
+// const newB = (generateBrand());
 
-cars.push(newC)
-console.log(cars);
-updateCar(newC)
-console.log(cars)
+// cars.push(newC)
+// console.log(cars);
+// updateCar(newC)
+// console.log(cars)
 
 // console.log(updateCar({
 //   "id": "ada32j2312lk3j12ndas5d",
@@ -96,3 +96,12 @@ console.log(cars)
 // }))
 // console.log(cars)
 // console.log(brands)
+
+const st = '123448'
+// console.log(typeof +st === NaN);
+// console.log(typeof Number(st));
+// console.log(+st)
+console.log(Number(st));
+
+// console.log(st.instanceof(Number))
+// console.log(Number(st));

@@ -18,6 +18,7 @@ const utils = require('../utils');
 
 const getCarsByBrand = (brand, sort) => {
   const { cars, brands } = utils
+
   const foundBrand = brands.find(b => b.name === brand)
   if (!foundBrand) throw new Error("Marca no encontrada")
   if (!foundBrand.cars.length) return "No se encontraron coches"
