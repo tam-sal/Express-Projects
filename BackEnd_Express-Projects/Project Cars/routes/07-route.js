@@ -15,8 +15,8 @@ const addCars = require('../controllers/01-controller');
 */
 
 router.post('/cars', (req, res) => {
-  const car = { ...req.body.car }
-  const brand = { name: req.body.brand.name, cars: req.body.brand.cars }
+  const car = req.body.car
+  const brand = req.body.brand
   //* const carObj = { id: car.id, model: car.model, color: car.color, price: car.price, new: car.new }
   //* const brandObj = { name: brand.name, cars: brand.cars }
 
