@@ -1,0 +1,42 @@
+Informational responses (100 – 199)
+Successful responses (200 – 299)
+Redirection messages (300 – 399)
+Client error responses (400 – 499)
+Server error responses (500 – 599)
+
+Source 
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
+
+Mime types
+Media types for files hosted on the Server
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types
+
+
+//! Verbose
+//* GET: Read Data
+//* POST: Insert Data
+//* PUT: Update Data
+//* DELTE: Delete Data
+
+//? REQUEST MESSAGE
+//! GET:
+//* www.store.com/api/orders get all orders
+//* [HEADERS] -> Optional info about our Request Message (MetaData) -> Object type
+//* [BODY] aka Payload: if it's a Get message, we don't need the body since we are targeting the resource directly. If we are adding resources to our server, we will provide that data in the body
+//! POST:
+//* www.store.com/api/orders ADD place an order (send data)
+//! PUT:
+//* www.store.com/api/orders/:id update specific order (params + send data)
+//! DELETE:
+//* www.store.com/api/orders/:id delete order (path params)
+
+//*====================================================================
+
+//? RESPONSE MESSAGE
+
+//! 1- HTTP VER 1.1
+//! 2- STATUS CODE -> Result (200 success - 400 Req Error - 404 Not Found)
+//! 3- STATUS TEXT ->
+//! 4- HEADER info about the response message, ex: text/html, charset=UTF-8
+//! content-type: text/html, charset=UTF-8 OR application/json / charset=utf-8
+//! 5- BODY

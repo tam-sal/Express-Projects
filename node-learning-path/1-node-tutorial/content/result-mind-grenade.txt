@@ -1,0 +1,1 @@
+THIS IS MY NEW FILE FROM PROMISIFY: 1- Hello this is first text file ---> 2- Hello this is second text fileTHIS IS MY NEW FILE FROM PROMISIFY: 1- Hello this is first text file ---> 2- Hello this is second text file -- with append flag {flag: 'a'}
