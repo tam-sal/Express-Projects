@@ -97,7 +97,7 @@ const updateCar = (car) => {
 // console.log(cars)
 // console.log(brands)
 
-const st = 'ddd'
+const st = 'false'
 // console.log(typeof +st === NaN);
 // console.log(typeof Number(st));
 // console.log(+st)
@@ -105,4 +105,6 @@ const st = 'ddd'
 
 // console.log(st.instanceof(Number))
 // console.log(Number(st));
-console.log(strWithNums(st))
+// console.log(strWithNums(st))
+
+console.log(Boolean(st))

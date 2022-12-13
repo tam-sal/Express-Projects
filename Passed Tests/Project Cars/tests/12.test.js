@@ -137,8 +137,7 @@ describe('GET /brands/:brandName/car-prices', function () {
    it('Debe responder con un error si el parámetro query "unused" no es booleano', () => {
       return supertest
          .get(
-            `/brands/${
-               utils.generateBrand().name
+            `/brands/${utils.generateBrand().name
             }/car-prices?unused=${faker.datatype.number()}`
          )
          .expect(400)
