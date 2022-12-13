@@ -23,26 +23,26 @@ const getBrandPrices = (brand, unused) => {
   const carsOut = cars.filter(c => idsBrand.includes(c.id))
   const newCars = carsOut.filter(c => c.new === true)
   const usedCars = carsOut.filter(c => c.new === false)
-  let sumnew = 0, sumold = 0
+  let sumNew = 0, sumOld = 0
 
-  const newcarsprices = newCars.map(c => c.price)
-  sumnew = newcarsprices.reduce((acc, val) => {
+  const newCarsPrices = newCars.map(c => c.price)
+  sumNew = newCarsPrices.reduce((acc, val) => {
     return acc + val
   }, 0)
 
-  const usedcarsprices = usedCars.map(c => c.price)
-  sumold = usedcarsprices.reduce((acc, val) => {
+  const usedCarsPrices = usedCars.map(c => c.price)
+  sumOld = usedCarsPrices.reduce((acc, val) => {
     return acc + val
   }, 0)
 
   if (unused === true) {
-    return sumnew
+    return sumNew
   }
   else if (unused === false) {
-    return sumold
+    return sumOld
   }
   else {
-    return sumnew + sumold
+    return sumNew + sumOld
   }
 
 
