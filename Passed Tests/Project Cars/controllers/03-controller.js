@@ -19,7 +19,6 @@ const updateCar = (car) => {
 
   if (!foundCar) throw new Error('No se encontro el coche solicitado')
 
-  console.log('passed car ', car);
   if (car.model === undefined || car.color === undefined || car.price === undefined || car.new === undefined || car.electric === undefined)
     throw new Error('Faltan datos a completar')
 

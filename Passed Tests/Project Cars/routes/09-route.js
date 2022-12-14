@@ -4,7 +4,7 @@ const updateCar = require('../controllers/03-controller');
 
   9️⃣ ***** EJERCICIO 9 ***** - PUT /cars 9️⃣:
 
-  🟢 Integrar la función updateCar que desarrollaste previamente (Ejercicio 3) para obtener los coches.
+   🟢 Integrar la función updateCar que desarrollaste previamente (Ejercicio 3) para obtener los coches.
   📌 Responder con un objeto con una propiedad "message" que se igual al string "Coche actualizado correctamente".
   📌 Si hay un error, responder un objeto con una propiedad "error": <el mensaje recibido en el objeto error>.
 
@@ -15,7 +15,16 @@ const updateCar = require('../controllers/03-controller');
 
 */
 
-// router.put('/cars', (req, res) => {});
+router.put('/cars', (req, res) => {
+  const { car } = req.body
+  try {
+    const result = updateCar(car)
+    if (Object.keys(result).length) return res.json({ message: 'Coche actualizado correctamente' })
+  } catch (error) {
+    return res.status(400).json({ error: error.message })
+
+  }
+});
 
 //⚠️ No modificar nada debajo de esta línea ⚠️
 module.exports = router;
