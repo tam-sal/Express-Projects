@@ -36,16 +36,13 @@ const updateCar = (car) => {
 
 
   let isFound = false;
-  for (let b = 0; b < brands.length; b++) {
-    for (let c = 0; c < brands[b].cars.length; c++) {
+  for (let b = 0; b < brands.length && !isFound; b++) {
+    for (let c = 0; c < brands[b].cars.length && !isFound; c++) {
       if (brands[b].cars[c] === foundCar.id) {
         brands[b].cars[c] = foundCar;
         isFound = true;
-        break;
       }
     }
-    if (isFound)
-      break;
   }
 
   return foundCar;
