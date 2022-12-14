@@ -16,29 +16,39 @@ const updateCar = (car) => {
   let { cars, brands } = utils
   let newCarId = car.id
   let foundCar = cars.find(c => c.id === newCarId)
-  if (!foundCar) throw new Error('No se encontro el coche solicitado')
-  if (!newCarId || !car.model || !car.color || !car.price || !car.new || !car.electric) throw new Error('Faltan datos a completar')
 
-  const idx = cars.indexOf(foundCar)
+  if (!foundCar) throw new Error('No se encontro el coche solicitado')
+
+  console.log('passed car ', car);
+  if (car.model === undefined || car.color === undefined || car.price === undefined || car.new === undefined || car.electric === undefined)
+    throw new Error('Faltan datos a completar')
 
   foundCar.price = car.price
   foundCar.new = car.new
-  foundCar.electric = car.electric
-  Object.assign(cars[idx], foundCar)
+  foundCar.electric = car.electric;
+
+  for (let c = 0; c < cars.length; c++) {
+    if (cars[c].id == foundCar.id) {
+      cars[c] = foundCar;
+      break;
+    }
+  }
 
 
-  // for (let i = 0; i < brands.length; i++) {
-  //   let carsInBrands = brands[i].cars
-  //   for (let j = 0; j < carsInBrands.length; j++) {
-  //     if (carsInBrands[j] === newCarId) {
-  //       carsInBrands[j] = newCarId
-  //     }
-  //   }
-  // }
+  let isFound = false;
+  for (let b = 0; b < brands.length; b++) {
+    for (let c = 0; c < brands[b].cars.length; c++) {
+      if (brands[b].cars[c] === foundCar.id) {
+        brands[b].cars[c] = foundCar;
+        isFound = true;
+        break;
+      }
+    }
+    if (isFound)
+      break;
+  }
 
-  brands[idx].cars.push(newCarId)
-  return foundCar
-
+  return foundCar;
 }
 
 // ⚠️ No modificar nada debajo de esta línea ⚠️
