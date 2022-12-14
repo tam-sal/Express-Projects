@@ -20,32 +20,36 @@ const getBrandPrices = (brand, unused) => {
   const foundBrand = brands.find(b => b.name === brand)
   if (!foundBrand) throw new Error("Marca no encontrada")
   const idsBrand = foundBrand.cars
-  const carsOut = cars.filter(c => idsBrand.includes(c.id))
-  const newCars = carsOut.filter(c => c.new === true)
-  const usedCars = carsOut.filter(c => c.new === false)
+  const carsInBrand = cars.filter(c => idsBrand.includes(c.id))
+  // const newCars = carsInBrand.filter(c => c.new === true)
+  // const usedCars = carsInBrand.filter(c => c.new === false)
+
+  // const newCarsPrices = newCars.map(c => c.price)
+  // sumNew = newCarsPrices.reduce((acc, val) => {
+  //   return acc + val
+  // }, 0)
+
+  // const usedCarsPrices = usedCars.map(c => c.price)
+  // sumOld = usedCarsPrices.reduce((acc, val) => {
+  //   return acc + val
+  // }, 0)
   let sumNew = 0, sumOld = 0
 
-  const newCarsPrices = newCars.map(c => c.price)
-  sumNew = newCarsPrices.reduce((acc, val) => {
-    return acc + val
-  }, 0)
+  for (let x = 0; x < carsInBrand.length; x++) {
+    let car = carsInBrand[x];
+    if (!car.new) {
+      sumOld += car.price;
+    } else {
+      sumNew += car.price;
+    }
 
-  const usedCarsPrices = usedCars.map(c => c.price)
-  sumOld = usedCarsPrices.reduce((acc, val) => {
-    return acc + val
-  }, 0)
-
-  if (unused === true) {
-    return sumNew
-  }
-  else if (unused === false) {
-    return sumOld
-  }
-  else {
-    return sumNew + sumOld
   }
 
+  if (unused === true) return Math.fround(sumNew);
 
+  if (unused === false) return Math.fround(sumOld);
+
+  return sumNew + sumOld
 };
 
 //⚠️ No modificar nada debajo de esta línea ⚠️

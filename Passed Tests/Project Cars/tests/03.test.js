@@ -33,7 +33,7 @@ describe('----------`updateCar`----------', function () {
       const cars = [utils.generateCar(), utils.generateCar()];
       const marca1 = utils.generateBrand();
       const marca2 = utils.generateBrand();
-      console.log(marca2);
+
       utils.brands.push(marca1);
       utils.cars.push(cars[0]);
       marca1.cars.push(cars[0].id);

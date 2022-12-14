@@ -19,14 +19,15 @@ router.get('/brands/:brandName/car-prices', (req, res) => {
   const { brandName } = req.params
   let { unused } = req.query
 
-  if (unused.toLowerCase() === 'true') unused = true
+  if (unused === undefined || unused === null) {
+    unused = null;
+  }
+  else if (unused.toLowerCase() === 'true') unused = true
   else if (unused.toLowerCase() === 'false') unused = false
   else if (unused !== null) {
     return res.status(400).json({ error: 'El parámetro unused es inválido' })
   }
-  else {
-    unused = null
-  }
+
   try {
     const result = getBrandPrices(brandName, unused)
     return res.json({ results: result })
